@@ -57,18 +57,18 @@ const LegalAssistant = () => {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${apiKey}`,
-          "Content-Type": "application/json",
-          "HTTP-Referer": window.location.href, // Optional, for OpenRouter analytics
-          "X-Title": "Mohkam Law Firm" // Optional, for OpenRouter analytics
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "openai/gpt-4o-mini", // Fast and capable model
+          model: "openai/gpt-4o-mini",
           messages: apiMessages,
         })
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errText = await response.text();
+        console.error("OpenRouter Error:", errText);
+        throw new Error('NETWORK_OR_API_ERROR');
       }
 
       const data = await response.json();
