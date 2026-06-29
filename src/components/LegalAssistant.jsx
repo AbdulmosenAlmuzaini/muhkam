@@ -30,7 +30,7 @@ const LegalAssistant = () => {
     setIsLoading(true);
 
     try {
-      let apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+      let apiKey = import.meta.env.VITE_GROQ_API_KEY;
       
       if (!apiKey || apiKey === 'undefined') {
         throw new Error('API_KEY_MISSING');
@@ -56,21 +56,21 @@ const LegalAssistant = () => {
         userMessage
       ];
 
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${apiKey}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "openai/gpt-4o-mini",
+          model: "llama3-70b-8192", // Fast and capable model on Groq
           messages: apiMessages,
         })
       });
 
       if (!response.ok) {
         const errText = await response.text();
-        console.error("OpenRouter Error:", errText);
+        console.error("Groq API Error:", errText);
         throw new Error(`API_ERROR: ${response.status} - ${errText}`);
       }
 
