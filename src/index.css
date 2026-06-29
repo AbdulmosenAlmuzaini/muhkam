@@ -594,6 +594,63 @@ section:nth-child(even) {
   background-color: rgba(212, 175, 55, 0.1);
 }
 
+.location-col {
+  flex: 1.5;
+  min-width: 320px;
+}
+
+.location-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  color: var(--text-dark);
+}
+
+.map-wrapper {
+  line-height: 0;
+}
+
+.location-info {
+  padding: 1.5rem;
+}
+
+.location-address {
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  color: #334155;
+}
+
+.location-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.location-btn {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 30px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  color: #2563eb !important;
+}
+
+.location-btn:hover {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
 .footer-bottom {
   text-align: center;
   padding-top: 2rem;

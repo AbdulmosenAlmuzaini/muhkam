@@ -22,14 +22,32 @@ const Footer = () => {
           </ul>
         </div>
         
-        <div className="footer-col">
-          <h4>الموقع على الخريطة</h4>
-          <div className="map-container">
-            <a href="https://maps.google.com/?q=FHRC+7F" target="_blank" rel="noopener noreferrer" className="map-link">
-              <div className="map-placeholder">
-                <span>📍 عرض على خرائط جوجل</span>
+        <div className="footer-col location-col">
+          <h4>الموقع</h4>
+          <div className="location-card">
+            <div className="map-wrapper">
+              <iframe 
+                src="https://maps.google.com/maps?q=24.4716,39.5898&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="200" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="موقع شركة محكم للمحاماة"
+              ></iframe>
+            </div>
+            <div className="location-info">
+              <p className="location-address">كورنيش وادي العقيق، البركة، المدينة المنورة 42371، المملكة العربية السعودية</p>
+              <div className="location-actions">
+                <a href="https://maps.google.com/?q=FHRC+7F" target="_blank" rel="noopener noreferrer" className="location-btn btn-directions">
+                  <span className="btn-icon">🧭</span> الاتجاهات
+                </a>
+                <a href="tel:0596155995" className="location-btn btn-call" dir="ltr">
+                  <span className="btn-icon">📞</span> الاتصال بـ 0596155995
+                </a>
               </div>
-            </a>
+            </div>
           </div>
         </div>
       </div>
