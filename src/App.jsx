@@ -6,6 +6,7 @@ import Services from './components/Services';
 import Objectives from './components/Objectives';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import LegalAssistant from './components/LegalAssistant';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <LegalAssistant />
     </>
   );
 }
