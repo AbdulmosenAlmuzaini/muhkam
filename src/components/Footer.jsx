@@ -27,13 +27,13 @@ const Footer = () => {
           <div className="location-card">
             <div className="map-wrapper">
               <iframe 
-                src="https://maps.google.com/maps?q=24.4716,39.5898&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d18023.91219570669!2d39.5932955!3d24.4826429!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bdbf82673cf09b%3A0xe39a1fd2f9b01be8!2z2LTYsdmD2Kkg2YXYrdmD2YUg2YTZhNmF2K3Yp9mF2KfYqSDZiNin2YTYpdiz2KrYtNin2LHYp9iqINin2YTZgtin2YbZiNmG2YrYqQ!5e1!3m2!1sar!2ssa!4v1782727956403!5m2!1sar!2ssa" 
                 width="100%" 
                 height="200" 
                 style={{ border: 0 }} 
                 allowFullScreen="" 
                 loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
                 title="موقع شركة محكم للمحاماة"
               ></iframe>
             </div>
