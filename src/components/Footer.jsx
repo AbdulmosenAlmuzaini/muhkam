@@ -15,6 +15,7 @@ const Footer = () => {
           <h4>معلومات الاتصال</h4>
           <ul className="contact-list">
             <li>📞 <a href="tel:0596155995" dir="ltr">0596155995</a></li>
+            <li>💬 <a href="https://wa.me/966596155995" target="_blank" rel="noopener noreferrer">تواصل معنا عبر الواتساب</a></li>
             <li>📍 كورنيش وادي العقيق، البركة، المدينة المنورة 42371</li>
             <li>🗺️ الرمز الإضافي: FHRC+7F المدينة المنورة</li>
             <li>🕒 أوقات العمل: الأحد - الخميس | 8:00 صباحاً - 5:00 مساءً</li>
