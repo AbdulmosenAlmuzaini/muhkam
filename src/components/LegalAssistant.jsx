@@ -63,7 +63,7 @@ const LegalAssistant = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model: "llama3-70b-8192", // Fast and capable model on Groq
+          model: "llama-3.3-70b-versatile", // Latest supported model on Groq
           messages: apiMessages,
         })
       });
