@@ -8,13 +8,15 @@ const Contact = () => {
     details: ''
   });
 
+  const [showSuccess, setShowSuccess] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('تم إرسال طلبك بنجاح. سنتواصل معك قريباً.');
+    setShowSuccess(true);
     setFormData({ name: '', phone: '', type: '', details: '' });
   };
 
@@ -67,6 +69,17 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      
+      {showSuccess && (
+        <div className="modal-overlay" onClick={() => setShowSuccess(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-icon">✅</div>
+            <h3>تم إرسال طلبك بنجاح!</h3>
+            <p>تم استلام بياناتك وسيقوم فريقنا بالتواصل معك في أقرب وقت.</p>
+            <button className="btn btn-primary" onClick={() => setShowSuccess(false)}>حسناً</button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
