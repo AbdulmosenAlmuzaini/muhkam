@@ -32,6 +32,10 @@ const LegalAssistant = () => {
     try {
       const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
       
+      if (!apiKey || apiKey === 'undefined') {
+        throw new Error('API_KEY_MISSING');
+      }
+      
       const systemPrompt = {
         role: "system",
         content: `أنت مساعد قانوني ذكي واحترافي يعمل لصالح "شركة محكم للمحاماة والاستشارات القانونية".
@@ -73,7 +77,11 @@ const LegalAssistant = () => {
       setMessages(prev => [...prev, { role: 'assistant', content: botMessage }]);
     } catch (error) {
       console.error("Error communicating with AI:", error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، حدث خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً أو التواصل معنا عبر الهاتف.' }]);
+      if (error.message === 'API_KEY_MISSING') {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، يبدو أن مفتاح API غير متوفر في إعدادات المنصة. يرجى التأكد من إضافة المتغير في Railway وإعادة بناء المشروع (Redeploy).' }]);
+      } else {
+        setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، حدث خطأ في الاتصال بالخادم (قد يكون بسبب إضافات حجب الإعلانات أو خطأ في الشبكة). يرجى المحاولة لاحقاً.' }]);
+      }
     } finally {
       setIsLoading(false);
     }
