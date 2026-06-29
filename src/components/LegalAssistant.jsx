@@ -68,7 +68,7 @@ const LegalAssistant = () => {
       if (!response.ok) {
         const errText = await response.text();
         console.error("OpenRouter Error:", errText);
-        throw new Error('NETWORK_OR_API_ERROR');
+        throw new Error(`API_ERROR: ${response.status} - ${errText}`);
       }
 
       const data = await response.json();
@@ -79,8 +79,10 @@ const LegalAssistant = () => {
       console.error("Error communicating with AI:", error);
       if (error.message === 'API_KEY_MISSING') {
         setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، يبدو أن مفتاح API غير متوفر في إعدادات المنصة. يرجى التأكد من إضافة المتغير في Railway وإعادة بناء المشروع (Redeploy).' }]);
+      } else if (error.message && error.message.includes('API_ERROR')) {
+        setMessages(prev => [...prev, { role: 'assistant', content: `تفاصيل الخطأ من الخادم: ${error.message}. تأكد من صحة مفتاح الـ API (بدون مسافات أو علامات تنصيص).` }]);
       } else {
-        setMessages(prev => [...prev, { role: 'assistant', content: 'عذراً، حدث خطأ في الاتصال بالخادم (قد يكون بسبب إضافات حجب الإعلانات أو خطأ في الشبكة). يرجى المحاولة لاحقاً.' }]);
+        setMessages(prev => [...prev, { role: 'assistant', content: `حدث خطأ في الشبكة: ${error.message}. إذا كنت تستخدم متصفح Brave أو إضافة حجب الإعلانات، يرجى إيقافها للموقع.` }]);
       }
     } finally {
       setIsLoading(false);
