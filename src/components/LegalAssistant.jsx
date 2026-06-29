@@ -30,11 +30,14 @@ const LegalAssistant = () => {
     setIsLoading(true);
 
     try {
-      const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
+      let apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
       
       if (!apiKey || apiKey === 'undefined') {
         throw new Error('API_KEY_MISSING');
       }
+      
+      // Sanitize API Key to remove accidental quotes or whitespace
+      apiKey = apiKey.replace(/['"]/g, '').trim();
       
       const systemPrompt = {
         role: "system",
